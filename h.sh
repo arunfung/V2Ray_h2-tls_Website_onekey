@@ -269,14 +269,14 @@ modify_crontab(){
 
 #安装caddy主程序
 caddy_install(){
-	curl https://getcaddy.com | bash -s personal
+	curl -sS https://webinstall.dev/caddy | bash
 
 	touch /etc/systemd/system/caddy.service
 	cat <<EOF > /etc/systemd/system/caddy.service
 [Unit]
 Description=Caddy server
 [Service]
-ExecStart=/usr/local/bin/caddy -conf=/etc/caddy/Caddyfile -agree=true -ca=https://acme-v02.api.letsencrypt.org/directory
+ExecStart=/usr/local/bin/caddy -conf=/etc/caddy/Caddyfile -agree=true -ca=https://acme-staging-v02.api.letsencrypt.org/directory
 Restart=always
 User=root
 [Install]
@@ -698,7 +698,7 @@ share_uuid(){
 
 #生成Windows客户端
 win64_v2ray(){
-	TAG_URL="https://api.github.com/repos/v2ray/v2ray-core/releases/latest"
+	TAG_URL="https://api.github.com/repos/v2fly/v2ray-core/releases/latest"
 	NEW_VER=`curl -s ${TAG_URL} --connect-timeout 10| grep 'tag_name' | cut -d\" -f4`
 	wget https://github.com/dylanbai8/V2Ray_h2-tls_Website_onekey/raw/master/V2rayPro.zip
 	wget https://github.com/v2ray/v2ray-core/releases/download/${NEW_VER}/v2ray-windows-64.zip
