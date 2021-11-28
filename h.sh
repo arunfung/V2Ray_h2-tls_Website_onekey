@@ -297,6 +297,7 @@ web_install(){
 
 #生成v2ray配置文件
 v2ray_conf_add(){
+  mkdir ${v2ray_conf_dir}
 	touch ${v2ray_conf_dir}/config.json
 	cat <<EOF > ${v2ray_conf_dir}/config.json
 {
