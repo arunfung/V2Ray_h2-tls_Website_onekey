@@ -348,8 +348,7 @@ caddy_conf_add(){
 	mkdir ${caddy_conf_dir}
 	touch ${caddy_conf_dir}/Caddyfile
 	cat <<EOF > ${caddy_conf_dir}/Caddyfile
-https://SETSERVER:SETPORT443 {
-	tls admin@SETSERVER
+SETSERVER {
 	root /www
 
 	proxy /SETPATH https://127.0.0.1:SETPORTV {
